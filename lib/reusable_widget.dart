@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+
+
 Image logoWidget(String imageName)
 {
   return Image.asset(
@@ -27,6 +29,9 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
                 ),
             labelText: text,
             labelStyle: TextStyle(color: Colors.white.withOpacity(0.9)),
+            //new
+            errorStyle: TextStyle(color: Colors.white),
+            errorText: null,
             filled: true,
             floatingLabelBehavior: FloatingLabelBehavior.never,
             fillColor: Colors.white.withOpacity(0.3),
@@ -37,6 +42,7 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
             keyboardType: isPasswordType
                 ? TextInputType.visiblePassword
                 : TextInputType.emailAddress,
+
 
   );
 }
@@ -49,7 +55,6 @@ Container SignInUpButton(BuildContext context, bool isLogin, Function onTap) {
     decoration: BoxDecoration(borderRadius: BorderRadius.circular(90)),
     child: ElevatedButton(
       onPressed: () {
-        onTap();
         //code
       },
       child: Text(

@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sign_up_in/drawer_content.dart';
 import 'package:sign_up_in/home1.dart';
 import 'package:sign_up_in/wel_screen.dart';
+import 'package:sign_up_in/signup_screen.dart';
+
+String username_admin = globalUsername;
+String email_admin = globalEmail;
+
+
 class nav_bar extends StatelessWidget {
   const nav_bar({Key? key}) : super(key: key);
 
@@ -12,8 +18,8 @@ class nav_bar extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-                accountName: Text("ANKITA"),
-                accountEmail: Text("ankita27@gmail.com"),
+                accountName: Text(username_admin.toUpperCase()),
+                accountEmail: Text(email_admin),
                 currentAccountPicture: CircleAvatar(
                   child: ClipOval(
                     child: Image.asset("assets/images/admin1.png", width: 90, height: 90,
