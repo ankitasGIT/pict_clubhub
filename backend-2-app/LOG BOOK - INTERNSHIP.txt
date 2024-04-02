@@ -1,0 +1,27 @@
+LOG BOOK - INTERNSHIP
+Description
+
+
+27 Jan 2024 - First Meet w Mentor
+
+30 Jan 2024 :-	Discussion on Google Meet - about flutter tutorial & app - New Ideas
+
+3 Feb 2024 :- Debate on Scope - Need of Project - Updations in Project
+
+9 Feb 2024 :-  Colab on Design of App - started frontend design - Data Model
+
+14 Feb 2024 :-	Intermediate backend fucntionality - Home page UI done
+
+23 Feb 2024 :-  Final TechStack - Data analysis - 10% UI done
+
+4 March 2024 :- Implementation of Backend - Database Connection!
+
+12 March :- Implementation of Backend - Login - Signup - Done
+
+27/28 March :- Second Meet w Mentor ?
+
+1 April :- Refining Design & Functionalities
+
+15 April :- Submission
+
+
