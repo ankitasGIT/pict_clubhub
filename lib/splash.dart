@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_up_in/signin_screen.dart';
+import 'package:sign_up_in/Login_Signup/signin_screen.dart';
 
 void main() {
   runApp(const MyApp());

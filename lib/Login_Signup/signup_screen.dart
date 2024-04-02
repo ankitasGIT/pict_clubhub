@@ -1,5 +1,5 @@
 import 'dart:convert';
-import "config.dart";
+import 'package:sign_up_in/config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -7,9 +7,10 @@ import 'package:sign_up_in/color_utilis.dart';
 import 'package:sign_up_in/reusable_widget.dart';
 import 'package:sign_up_in/wel_screen.dart';
 import 'package:http/http.dart' as http;
-import 'home1.dart';
-import 'main.dart';
-import 'package:flutter_pw_validator/flutter_pw_validator.dart';
+// import 'home1.dart';
+import 'package:sign_up_in/home1.dart';
+import 'package:sign_up_in/main.dart';
+// import 'package:flutter_pw_validator/flutter_pw_validator.dart';
 
 String globalUsername = '';
 String globalEmail = '';

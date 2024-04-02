@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sign_up_in/signin_screen.dart';
+import 'package:sign_up_in/Login_Signup/signin_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

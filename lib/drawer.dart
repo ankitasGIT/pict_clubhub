@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sign_up_in/drawer_content.dart';
 import 'package:sign_up_in/home1.dart';
 import 'package:sign_up_in/wel_screen.dart';
-import 'package:sign_up_in/signup_screen.dart';
+import 'package:sign_up_in/Login_Signup/signup_screen.dart';
 
 String username_admin = globalUsername;
 String email_admin = globalEmail;
