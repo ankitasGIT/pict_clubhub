@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_up_in/Login_Signup/signin_screen.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());
@@ -32,14 +32,13 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> {
-
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 3), (){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> SignInScreen()));
-    }
-    );
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => SignInScreen()));
+    });
   }
 
   @override
@@ -51,9 +50,13 @@ class _SplashState extends State<Splash> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/images/logo (1).png', height: 150, color: Colors.blue,),//150
+            Image.asset(
+              'assets/images/logo (1).png',
+              height: 150,
+              color: Colors.blue,
+            ), //150
             Text(
-              "PICT CLUBHUB",
+              "PICT Clubhub",
               style: TextStyle(
                 fontSize: 32,
                 color: Colors.blue,
@@ -62,8 +65,10 @@ class _SplashState extends State<Splash> {
               ),
             ),
 
-            const SizedBox(height: 30,),
-            if(defaultTargetPlatform == TargetPlatform.iOS)
+            const SizedBox(
+              height: 30,
+            ),
+            if (defaultTargetPlatform == TargetPlatform.iOS)
               const CupertinoActivityIndicator(
                 color: Colors.blue,
                 radius: 20,
@@ -93,4 +98,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
