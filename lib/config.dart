@@ -1,3 +1,5 @@
-final url = 'http://192.168.29.251:3000/';
+//in url add your machine's ip address
+
+final url = 'http://192.168.155.91:3000/';
 final registration = url + 'registration';
 final login = url + 'login';
