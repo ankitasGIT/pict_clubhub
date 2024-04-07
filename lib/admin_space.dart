@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
 
-// class WelcomeAdminPage extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     _showDialog(context);
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Welcome Admin'),
-//       ),
-//       body: Center(
-//         child: Text('Welcome Admin'),
-//       ),
-//     );
-//   }
+class WelcomeAdminPage extends StatelessWidget {
+  const WelcomeAdminPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) => _showDialog(context));
+
+    return Scaffold(
+      backgroundColor: Colors.grey[900],
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
+        shadowColor: Colors.grey[600],
+        elevation: 1,
+        title: const Text("Admin's Space"),
+      ),
+      body: const Center(
+        child: Text(
+          'I don\'t know what to show here :/\nSorry Ishu :)',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+}
 
 void _showDialog(BuildContext context) {
   showDialog(
@@ -21,8 +37,12 @@ void _showDialog(BuildContext context) {
       return AlertDialog(
         backgroundColor: Colors.blueGrey[800],
         alignment: Alignment.centerLeft,
-        title: Text("Create Event"),
-        content: Text("Do you want to create an event?",
+        title: const Text("Create Event",
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.white,
+            )),
+        content: const Text("Do you want to create an event?",
             style: TextStyle(
               fontSize: 22,
               color: Colors.white,
@@ -32,7 +52,7 @@ void _showDialog(BuildContext context) {
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text(
+            child: const Text(
               'No',
               style: TextStyle(
                 fontSize: 18,
@@ -45,7 +65,7 @@ void _showDialog(BuildContext context) {
               // Add functionality for "Yes" button
               Navigator.of(context).pop();
             },
-            child: Text(
+            child: const Text(
               'Yes',
               style: TextStyle(
                 fontSize: 18,
