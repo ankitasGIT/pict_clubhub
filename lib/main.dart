@@ -56,7 +56,7 @@ class _SplashState extends State<Splash> {
               color: Colors.blue,
             ), //150
             Text(
-              "PICT Clubhub",
+              "PICT CLUBHUB",
               style: TextStyle(
                 fontSize: 32,
                 color: Colors.blue,
