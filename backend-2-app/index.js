@@ -1,7 +1,8 @@
 const app = require('./app');
 const db = require('./config/db.js')
 const port = 3000
-const User = require('./models/user.models.js')
+require("dotenv").config();
+
 
 app.get('/', (req, res) =>{
     console.log("Hello server!");
