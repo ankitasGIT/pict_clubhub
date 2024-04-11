@@ -5,8 +5,6 @@ class WelcomeAdminPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) => _showDialog(context));
-
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
@@ -16,14 +14,24 @@ class WelcomeAdminPage extends StatelessWidget {
         elevation: 1,
         title: const Text("Admin's Space"),
       ),
-      body: const Center(
-        child: Text(
-          'I don\'t know what to show here :/\nSorry Ishu :)',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white,
-          ),
-          textAlign: TextAlign.center,
+      body: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                _showDialog(context);
+              },
+              child: const Text("Create new event"),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text("Update event"),
+            ),
+          ],
         ),
       ),
     );
@@ -34,46 +42,37 @@ void _showDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return AlertDialog(
-        backgroundColor: Colors.blueGrey[800],
-        alignment: Alignment.centerLeft,
-        title: const Text("Create Event",
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.white,
-            )),
-        content: const Text("Do you want to create an event?",
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.white,
-            )),
-        actions: [
-          MaterialButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: const Text(
-              'No',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
+      return Dialog(
+        child: Container(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const Text("Please select the type of event",
+                  style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                  onPressed: () {},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                  ),
+                  child: const Text(
+                    "Technical",
+                    style: TextStyle(color: Colors.white),
+                  )),
+              const SizedBox(height: 10),
+              ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                ),
+                child: const Text("Non-Technical",
+                    style: TextStyle(color: Colors.white)),
               ),
-            ),
+            ],
           ),
-          MaterialButton(
-            onPressed: () {
-              // Add functionality for "Yes" button
-              Navigator.of(context).pop();
-            },
-            child: const Text(
-              'Yes',
-              style: TextStyle(
-                fontSize: 18,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
+        ),
       );
     },
   );
