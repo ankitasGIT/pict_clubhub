@@ -1,122 +1,3 @@
-/*import 'package:flutter/material.dart';
-
-class TechnicalFormPage extends StatelessWidget {
-  const TechnicalFormPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Technical Event Form'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Name')),
-              ),
-              SizedBox(height: 20),
-              DropdownButtonFormField<String>(
-                items: [
-                  DropdownMenuItem(
-                    child: Text('Category 1'),
-                    value: 'Category 1',
-                  ),
-                  DropdownMenuItem(
-                    child: Text('Category 2'),
-                    value: 'Category 2',
-                  ),
-                  // Add more categories as needed
-                ],
-                onChanged: (value) {},
-                decoration: InputDecoration(label: Text('Event Category')),
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Info')),
-                maxLines: null,
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Link')),
-              ),
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(label: Text('Start Date')),
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(label: Text('Start Time')),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(label: Text('End Date')),
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: TextFormField(
-                      decoration: InputDecoration(label: Text('End Time')),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Duration')),
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Fees')),
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Image')),
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Venue')),
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Created By')),
-                initialValue: 'Logged in admin name', // Fetch dynamically
-              ),
-              SizedBox(height: 20),
-              TextFormField(
-                decoration: InputDecoration(label: Text('Event Created Time')),
-                initialValue: DateTime.now().toString(), // Fetch current time
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  // Implement form submission logic
-                },
-                child: Text('Submit'),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-*/
-
 import 'package:flutter/material.dart';
 
 class TechnicalFormPage extends StatefulWidget {
@@ -127,9 +8,21 @@ class TechnicalFormPage extends StatefulWidget {
 class _TechnicalFormPageState extends State<TechnicalFormPage> {
   final _formKey = GlobalKey<FormState>();
 
+  final List<String> _eventCategories = [
+    "ACM",
+    "IEEE",
+    "Art Circle",
+    "CSI",
+    "DebSoc",
+    "NSS",
+    "Pictoreal",
+    "Robotics Club",
+    "TEDx",
+  ];
+
   // Form fields values
   String _eventName = '';
-  String _eventCategory = '';
+  String? _eventCategory;
   String _eventInfo = '';
   String _eventLink = '';
   DateTime _eventStartDateTime = DateTime.now();
@@ -141,17 +34,26 @@ class _TechnicalFormPageState extends State<TechnicalFormPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[900],
       appBar: AppBar(
-        title: Text('Technical Form'),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Colors.white,
+        shadowColor: Colors.grey[600],
+        elevation: 1,
+        title: const Text('Technical Form'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(24.0),
         child: Form(
           key: _formKey,
           child: ListView(
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: 'Event Name'),
+                decoration: const InputDecoration(
+                  labelText: 'Event Name',
+                  labelStyle: TextStyle(color: Colors.white),
+                ),
+                style: const TextStyle(color: Colors.white),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter event name';
@@ -162,89 +64,122 @@ class _TechnicalFormPageState extends State<TechnicalFormPage> {
                   _eventName = value!;
                 },
               ),
-              TextFormField(
-                decoration: InputDecoration(labelText: 'Event Category'),
+              DropdownButtonFormField<String>(
+                decoration: const InputDecoration(
+                  labelText: 'Event Category',
+                  labelStyle: TextStyle(color: Colors.white),
+                ),
+                dropdownColor: Colors.grey[800],
+                style: const TextStyle(color: Colors.white),
+                value: _eventCategory,
+                items: _eventCategories
+                    .map((category) => DropdownMenuItem(
+                          value: category,
+                          child: Text(category),
+                        ))
+                    .toList(),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter event category';
+                    return 'Please select event category';
                   }
                   return null;
                 },
-                onSaved: (value) {
-                  _eventCategory = value!;
+                onChanged: (value) {
+                  setState(() {
+                    _eventCategory = value!;
+                  });
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Event Info'),
+                decoration: const InputDecoration(
+                    labelText: 'Event Info',
+                    labelStyle: TextStyle(color: Colors.white)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter event info';
                   }
                   return null;
                 },
+                style: const TextStyle(color: Colors.white),
                 onSaved: (value) {
                   _eventInfo = value!;
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Event Link'),
+                decoration: const InputDecoration(
+                    labelText: 'Event Link',
+                    labelStyle: TextStyle(color: Colors.white)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter event link';
                   }
                   return null;
                 },
+                style: const TextStyle(color: Colors.white),
                 onSaved: (value) {
                   _eventLink = value!;
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Event Venue'),
+                decoration: const InputDecoration(
+                    labelText: 'Event Venue',
+                    labelStyle: TextStyle(color: Colors.white)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter event venue';
                   }
                   return null;
                 },
+                style: const TextStyle(color: Colors.white),
                 onSaved: (value) {
                   _eventVenue = value!;
                 },
               ),
               TextFormField(
-                decoration:
-                    InputDecoration(labelText: 'Event Start Date and Time'),
+                decoration: const InputDecoration(
+                    labelText: 'Event Start Date and Time',
+                    labelStyle: TextStyle(color: Colors.white)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter event start date and time';
                   }
                   return null;
                 },
+                style: const TextStyle(color: Colors.white),
                 onSaved: (value) {
                   // Parse and save start date time here
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(
-                    labelText: 'Event End Date and Time (Optional)'),
+                decoration: const InputDecoration(
+                    labelText: 'Event End Date and Time (Optional)',
+                    labelStyle: TextStyle(color: Colors.white)),
+                style: const TextStyle(color: Colors.white),
                 onSaved: (value) {
                   // Parse and save end date time here
                 },
               ),
               TextFormField(
-                decoration:
-                    InputDecoration(labelText: 'Event Duration (Optional)'),
+                decoration: const InputDecoration(
+                    labelText: 'Event Duration (Optional)',
+                    labelStyle: TextStyle(color: Colors.white)),
                 keyboardType: TextInputType.number,
+                style: const TextStyle(color: Colors.white),
                 onSaved: (value) {
                   // Parse and save event duration here
                 },
               ),
               TextFormField(
-                decoration: InputDecoration(labelText: 'Event Fees (Optional)'),
+                decoration: const InputDecoration(
+                    labelText: 'Event Fees (Optional)',
+                    labelStyle: TextStyle(color: Colors.white)),
                 keyboardType: TextInputType.number,
+                style: const TextStyle(color: Colors.white),
                 onSaved: (value) {
                   // Parse and save event fees here
                 },
               ),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -252,7 +187,7 @@ class _TechnicalFormPageState extends State<TechnicalFormPage> {
                     _submitForm();
                   }
                 },
-                child: Text('Submit'),
+                child: const Text('Submit'),
               ),
             ],
           ),
