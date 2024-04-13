@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'technical_form.dart'; // Import the TechnicalFormPage
+import 'non-technical_form.dart';
 
 class WelcomeAdminPage extends StatelessWidget {
   const WelcomeAdminPage({Key? key}) : super(key: key);
@@ -96,7 +97,12 @@ void _showDialog(BuildContext context) {
               ),
               const SizedBox(height: 10),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NontechFormPage()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.blue,
                   padding: EdgeInsets.symmetric(vertical: 16),
