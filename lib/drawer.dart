@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sign_up_in/Login_Signup/controller.dart';
+import 'package:sign_up_in/Login_Signup/user_or_admin.dart';
 import 'package:sign_up_in/admin_space.dart';
 import 'package:sign_up_in/drawer_content.dart';
 import 'package:sign_up_in/home1.dart';
@@ -18,18 +20,32 @@ class nav_bar extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(username_admin.toUpperCase()),
-            accountEmail: Text(email_admin),
-            currentAccountPicture: CircleAvatar(
-              child: ClipOval(
-                child: Image.asset(
-                  "assets/images/admin1.png",
-                  width: 90,
-                  height: 90,
-                  fit: BoxFit.cover,
-                ),
-              ),
+            accountName: Text(
+              username_admin.isEmpty
+                  ? UserLoginController.getUsername().toUpperCase()
+                  : username_admin.toUpperCase(),
             ),
+            accountEmail: Text(
+              email_admin.isEmpty
+                  ? UserLoginController.getEmail()
+                  : email_admin,
+            ),
+            currentAccountPicture: UserLoginController.getRole() == "admin"
+                ? CircleAvatar(
+                    child: ClipOval(
+                      child: Image.asset(
+                        "assets/images/admin1.png",
+                        width: 90,
+                        height: 90,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  )
+                : Image.asset(
+                    'assets/images/logo (1).png',
+                    height: 150,
+                    color: Colors.blue,
+                  ), //15
             decoration: BoxDecoration(
                 //color: Colors.black26,
                 image: DecorationImage(
@@ -77,17 +93,21 @@ class nav_bar extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => WelcomeScreen()));
             },
           ),
-          ListTile(
-            leading: Icon(
-              Icons.people_outline_outlined,
-              color: Colors.blue,
-            ),
-            title: Text("Admin Space"),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => WelcomeAdminPage()));
-            },
-          ),
+          UserLoginController.getRole() == "admin"
+              ? ListTile(
+                  leading: Icon(
+                    Icons.people_outline_outlined,
+                    color: Colors.blue,
+                  ),
+                  title: Text("Admin Space"),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => WelcomeAdminPage()));
+                  },
+                )
+              : Container(),
           ListTile(
             leading: Icon(
               Icons.logout,
@@ -130,8 +150,10 @@ void _showDialog(BuildContext context) {
           actions: [
             MaterialButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => WelcomeScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => UserOrAdminScreen()));
               },
               child: Text(
                 'yes',
