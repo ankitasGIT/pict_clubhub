@@ -7,6 +7,8 @@ exports.createEvent = async(req, res) => {
         const { EventId, EventName, EventCategory, EventContent, EventLink,
             EventStart, EventDeadline,EventImage, EventFees, EventTime, EventVenue} = req.body;
 
+            const Admin = req.user._id;
+
 
         //constraint check
         if(

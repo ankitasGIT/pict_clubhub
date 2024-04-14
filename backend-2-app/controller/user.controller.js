@@ -39,7 +39,7 @@ exports.login = async(req, res, next) => {
 
         //store data in jwt
         let tokenData = {_id: User._id, email: User.email};
-
+ 
         const token = await UserService.generateToken(tokenData, "secretkey", "1d");
 
 
