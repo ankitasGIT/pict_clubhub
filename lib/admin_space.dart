@@ -27,7 +27,7 @@ class WelcomeAdminPage extends StatelessWidget {
                 _showDialog(context);
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
+                backgroundColor: Colors.blue,
                 padding: EdgeInsets.symmetric(vertical: 20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -42,7 +42,7 @@ class WelcomeAdminPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                primary: Colors.blue,
+                backgroundColor: Colors.blue,
                 padding: EdgeInsets.symmetric(vertical: 20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
@@ -84,7 +84,7 @@ void _showDialog(BuildContext context) {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
+                  backgroundColor: Colors.blue,
                   padding: EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -104,7 +104,7 @@ void _showDialog(BuildContext context) {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.blue,
+                  backgroundColor: Colors.blue,
                   padding: EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
