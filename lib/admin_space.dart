@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sign_up_in/technical_form.dart';
+import 'technical_form.dart'; // Import the TechnicalFormPage
+import 'non-technical_form.dart';
 
 class WelcomeAdminPage extends StatelessWidget {
-  const WelcomeAdminPage({super.key});
+  const WelcomeAdminPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +21,37 @@ class WelcomeAdminPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(height: 40),
+            const SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
                 _showDialog(context);
               },
-              child: const Text("Create new event"),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                padding: EdgeInsets.symmetric(vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: const Text(
+                "Create New Event",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 40),
             ElevatedButton(
               onPressed: () {},
-              child: const Text("Update event"),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                padding: EdgeInsets.symmetric(vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              child: const Text(
+                "Update Event",
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
             ),
           ],
         ),
@@ -54,25 +75,45 @@ void _showDialog(BuildContext context) {
                   style: TextStyle(fontSize: 18)),
               const SizedBox(height: 20),
               ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => TechnicalFormPage()));
-                  },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.blue),
+                onPressed: () {
+                  // Navigate to TechnicalFormPage
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => TechnicalFormPage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Text(
-                    "Technical",
-                    style: TextStyle(color: Colors.white),
-                  )),
+                ),
+                child: const Text(
+                  "Technical",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
               const SizedBox(height: 10),
               ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => NontechFormPage()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue,
+                  padding: EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                 ),
-                child: const Text("Non-Technical",
-                    style: TextStyle(color: Colors.white)),
+                child: const Text(
+                  "Non-Technical",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
               ),
             ],
           ),
@@ -81,4 +122,3 @@ void _showDialog(BuildContext context) {
     },
   );
 }
-// }
