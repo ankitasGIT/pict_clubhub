@@ -47,13 +47,13 @@ class nav_bar extends StatelessWidget {
                     color: Colors.blue,
                   ), //15
             decoration: BoxDecoration(
-                //color: Colors.black26,
+                color: Colors.black,
                 image: DecorationImage(
-              image: NetworkImage(
-                  "https://e1.pxfuel.com/desktop-wallpaper/67/798/desktop-wallpaper-black"
-                  "-top-black-backgrounds-25-iphone-plain-black-thumbnail.jpg"),
-              fit: BoxFit.cover,
-            )),
+                  image: NetworkImage(
+                      "https://e1.pxfuel.com/desktop-wallpaper/67/798/desktop-wallpaper-black"
+                      "-top-black-backgrounds-25-iphone-plain-black-thumbnail.jpg"),
+                  fit: BoxFit.cover,
+                )),
           ),
           ListTile(
             leading: Icon(
