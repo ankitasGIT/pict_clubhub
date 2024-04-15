@@ -6,7 +6,8 @@ const {Schema} = mongoose;
 const EventSchema = new Schema({
     Admin: {
         type: Schema.Types.ObjectId,
-        ref: UserModel.modelName
+        ref: "User",
+        required:true
     },
     EventId: {
         type: Number,
