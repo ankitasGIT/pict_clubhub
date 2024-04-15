@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_up_in/Login_Signup/signin_screen.dart';
+import 'package:sign_up_in/Login_Signup/user_or_admin.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,8 +37,8 @@ class _SplashState extends State<Splash> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => SignInScreen()));
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => UserOrAdminScreen()));
     });
   }
 
