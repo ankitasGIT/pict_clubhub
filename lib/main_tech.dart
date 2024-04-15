@@ -18,14 +18,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-
       home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -41,37 +39,37 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(
             height: 110,
           ),
-          Padding(padding: EdgeInsets.only(left: 16, right: 16),
+          Padding(
+            padding: EdgeInsets.only(left: 16, right: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("TECHNICAL HUB", style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                        )
-                    ),),
-                    SizedBox(height: 4,),
-                    Text("Technical Clubs", style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                        )
-                    ),),
+                    Text(
+                      "TECHNICAL HUB",
+                      style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                      )),
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      "Technical Clubs",
+                      style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                      )),
+                    ),
                   ],
                 ),
-                IconButton(
-                  alignment: Alignment.topCenter,
-                  icon: Image.asset("assets/images/admin1.png",width: 150,),
-                  onPressed: () {
-
-                  },
-                )
               ],
             ),
           ),
