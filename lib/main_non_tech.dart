@@ -4,7 +4,6 @@ import 'package:sign_up_in/non_tech.dart';
 import 'grid.dart';
 
 class Non_Home extends StatefulWidget {
-
   @override
   State<Non_Home> createState() => _MyHomePageState();
 }
@@ -20,37 +19,45 @@ class _MyHomePageState extends State<Non_Home> {
           SizedBox(
             height: 110,
           ),
-          Padding(padding: EdgeInsets.only(left: 16, right: 16),
+          Padding(
+            padding: EdgeInsets.only(left: 16, right: 16),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text("NON-TECHNICAL HUB", style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                        )
-                    ),),
-                    SizedBox(height: 4,),
-                    Text("Non-Technical Events", style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                        )
-                    ),),
+                    Text(
+                      "NON-TECHNICAL HUB",
+                      style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                      )),
+                    ),
+                    SizedBox(
+                      height: 4,
+                    ),
+                    Text(
+                      "Non-Technical Events",
+                      style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                      )),
+                    ),
                   ],
                 ),
-                IconButton(
-                  alignment: Alignment.topCenter,
-                  icon: Image.asset("assets/images/admin1.png",width: 150,),
-                  onPressed: () {
-
-                  },
-                )
+                // IconButton(
+                //   alignment: Alignment.topCenter,
+                //   icon: Image.asset(
+                //     "assets/images/admin1.png",
+                //     width: 150,
+                //   ),
+                //   onPressed: () {},
+                // )
               ],
             ),
           ),

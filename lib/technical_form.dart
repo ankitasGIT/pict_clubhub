@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class TechnicalFormPage extends StatefulWidget {
   @override
@@ -11,12 +13,12 @@ class _TechnicalFormPageState extends State<TechnicalFormPage> {
   final List<String> _eventCategories = [
     "ACM",
     "IEEE",
-    "Art Circle",
+    "ART CIRCLE",
     "CSI",
-    "DebSoc",
+    "DEBSOC",
     "NSS",
-    "Pictoreal",
-    "Robotics Club",
+    "PICTOREAL",
+    "ROBOTICS CLUB",
     "TEDx",
   ];
 
@@ -30,6 +32,18 @@ class _TechnicalFormPageState extends State<TechnicalFormPage> {
   int? _eventDuration;
   int? _eventFees;
   String _eventVenue = '';
+  File? _eventImage; // File for Event Image
+
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _eventImage = File(pickedFile.path);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -150,15 +164,39 @@ class _TechnicalFormPageState extends State<TechnicalFormPage> {
                   // Parse and save start date time here
                 },
               ),
-              TextFormField(
-                decoration: const InputDecoration(
-                    labelText: 'Event End Date and Time (Optional)',
-                    labelStyle: TextStyle(color: Colors.white)),
-                style: const TextStyle(color: Colors.white),
-                onSaved: (value) {
-                  // Parse and save end date time here
-                },
+              Text(
+                'Event Image',
+                style: TextStyle(color: Colors.white, fontSize: 16),
               ),
+              SizedBox(height: 10), // Add some spacing
+              GestureDetector(
+                onTap: _pickImage,
+                child: Container(
+                  height: 100, // Reduced height
+                  color: Colors.grey[800],
+                  child: _eventImage == null
+                      ? Center(
+                          child: Icon(
+                            Icons.camera_alt,
+                            size: 30, // Reduced size
+                            color: Colors.white,
+                          ),
+                        )
+                      : Image.file(
+                          _eventImage!,
+                          fit: BoxFit.cover,
+                        ),
+                ),
+              ),
+              // TextFormField(
+              //   decoration: const InputDecoration(
+              //       labelText: 'Event End Date and Time (Optional)',
+              //       labelStyle: TextStyle(color: Colors.white)),
+              //   style: const TextStyle(color: Colors.white),
+              //   onSaved: (value) {
+              //     // Parse and save end date time here
+              //   },
+              // ),
               TextFormField(
                 decoration: const InputDecoration(
                     labelText: 'Event Duration (Optional)',
@@ -205,6 +243,9 @@ class _TechnicalFormPageState extends State<TechnicalFormPage> {
     print('Event Info: $_eventInfo');
     print('Event Link: $_eventLink');
     print('Event Venue: $_eventVenue');
+    if (_eventImage != null) {
+      print('Event Image Path: ${_eventImage!.path}');
+    }
     // Print other form field values...
 
     // After submission, you can navigate back to the previous screen or perform any other action
