@@ -3,16 +3,16 @@ const UserService = require("../services/user.services.js");
 const bcrypt = require("bcrypt");
 
 exports.register = async (req, res, next) => {
-  try {
-    const { username, email, password } = req.body;
+    try {
+      const { username, email, password } = req.body;
 
-    const success = await UserService.registerUser(username, email, password);
+      const success = await UserService.registerUser(username, email, password);
 
-    res.json({ status: true, success: "User registered successfully" });
-    return;
-  } catch (error) {
-    throw error;
-  }
+      res.json({ status: true, success: "User registered successfully" });
+      return;
+    } catch (error) {
+      throw error;
+    }
 };
 
 exports.login = async (req, res, next) => {

@@ -246,6 +246,9 @@ class _TechnicalFormPageState extends State<TechnicalFormPage> {
     if (_eventImage != null) {
       print('Event Image Path: ${_eventImage!.path}');
     }
+    // print('Event Start Date: ' $_eventStartDateTime);
+    // print('Event Start Date: ' $_eventEndDateTime);
+
     // Print other form field values...
 
     // After submission, you can navigate back to the previous screen or perform any other action
